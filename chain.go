@@ -2,7 +2,6 @@
 package alice
 
 import "net/http"
-import "fmt"
 
 // Chain acts as a list of http.Handler handlers.
 // Chain is effectively immutable:
@@ -52,7 +51,7 @@ func (c Chain) Then(h http.Handler) http.Handler {
 	for i := len(c.handlers) - 1; i >= 0; i-- {
 		final = c.handlers[i](final)
 	}
-	fmt.Println("Then()")
+
 	return final
 }
 
